@@ -40,12 +40,17 @@ class InsertImageFileView extends View
           @input id: "markdown-writer-copy-image-checkbox",
             type:"checkbox", outlet: "copyImageCheckbox"
           @span "Copy Image To: Missing Image Path (src) or Title (alt)", class: "side-label", outlet: "copyImageMessage"
+      @div outlet: "uploadImagePanel", class: "hidden dialog-row", =>
+        @label for: "markdown-writer-upload-image-checkbox", =>
+          @input id: "markdown-writer-upload-image-checkbox",
+            type:"checkbox", outlet: "uploadImageCheckbox"
+          @span "upload to qiniu", class: "side-label"
       @div class: "image-container", =>
         @img outlet: 'imagePreview'
 
   initialize: ->
     utils.setTabIndex([@closeViewButton,@imageEditor, @openImageButton, @titleEditor,
-      @widthEditor, @heightEditor, @alignEditor, @copyImageCheckbox])
+      @widthEditor, @heightEditor, @alignEditor, @copyImageCheckbox,@uploadImageCheckbox])
 
     @imageEditor.on "blur", =>
       file = @imageEditor.getText().trim()
@@ -68,13 +73,21 @@ class InsertImageFileView extends View
     return unless imgSource
 
     callback = =>
+      a = 0
+
+    callbackConfirm = =>
       @editor.transact => @insertImageTag()
       @detach()
 
-    if !@copyImageCheckbox.hasClass('hidden') && @copyImageCheckbox.prop("checked")
+    if !@copyImageCheckbox.hasClass('hidden') && @copyImageCheckbox.prop("checked") && !@uploadImageCheckbox.hasClass('hidden') && @uploadImageCheckbox.prop("checked")
       @copyImage(@resolveImagePath(imgSource), callback)
+      @uploadImage(imgSource, callbackConfirm)
+    else if !@uploadImageCheckbox.hasClass('hidden') && @uploadImageCheckbox.prop("checked")
+        @uploadImage(imgSource, callbackConfirm)
+    else if !@copyImageCheckbox.hasClass('hidden') && @copyImageCheckbox.prop("checked")
+        @copyImage(@resolveImagePath(imgSource), callbackConfirm)
     else
-      @uploadImage(imgSource, callback)
+      callbackConfirm()
 
   closeView: ->
     @detach()
@@ -136,8 +149,10 @@ class InsertImageFileView extends View
 
     if utils.isUrl(file) || @isInSiteDir(@resolveImagePath(file))
       @copyImagePanel.addClass("hidden")
+      @uploadImagePanel.addClass("hidden")
     else
       @copyImagePanel.removeClass("hidden")
+      @uploadImagePanel.removeClass("hidden")
 
   uploadImage: (file, callback) ->
     return callback() if utils.isUrl(file) || !fs.existsSync(file)
