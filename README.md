@@ -42,6 +42,7 @@ markdown-writer 版本：2.10.3
 cd ~/.atom/packages
 git clone https://github.com/xispower/md-writer-qiniu.git markdown-writer
 ```
+更新七牛配置：lib/config.cson
 
 - **Continue lists or table rows** when you press `enter` ([customize][adaa9527]).
   - **Correct ordered list numbers** (`markdown-writer:correct-order-list-numbers`).

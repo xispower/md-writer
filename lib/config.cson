@@ -29,13 +29,13 @@ sitePostsDir: "_posts/{year}/"
 siteImagesDir: "images/{year}/{month}/"
 
 # Qiniu Uploader
-qiniuAccessKey: "wCADNh80SNfZb7IoOncSa3kzqwuPOA4axHjpbh0H"
-qiniuSecretKey: "7FljhsC2dOD70d89XvyG44Bx-_kOLvn24jjsOjkQ"
-qiniuBucket: "dev-img"
+qiniuAccessKey: ""
+qiniuSecretKey: ""
+qiniuBucket: ""
 # qiniu bucket public domain http(s)://www.example.com
-qiniuDomain: "http://dev.img.cdn.ynsfy.com"
+qiniuDomain: ""
 # qiniu key prefix #{domain}/#{prefix}/{generate}
-qiniuKeyPrefix: "auto-upload/img/png"
+qiniuKeyPrefix: ""
 # Qiniu Style Separtor https://portal.qiniu.com/bucket/default/separator
 qiniuSepartor: "-"
 qiniuStyle: ""
