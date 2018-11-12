@@ -8,6 +8,7 @@ dialog = remote.dialog || remote.require "dialog"
 config = require "../config"
 utils = require "../utils"
 templateHelper = require "../helpers/template-helper"
+qiniu = require "../helpers/qiniu-uploader"
 
 lastInsertImageDir = null # remember last inserted image directory
 
@@ -16,6 +17,7 @@ class InsertImageFileView extends View
   @content: ->
     @div class: "markdown-writer markdown-writer-dialog", =>
       @label "Insert Image", class: "icon icon-device-camera"
+      @button "close", outlet: "closeViewButton", class: "btn"
       @div =>
         @label "Image Path (src)", class: "message"
         @subview "imageEditor", new TextEditorView(mini: true)
@@ -42,7 +44,7 @@ class InsertImageFileView extends View
         @img outlet: 'imagePreview'
 
   initialize: ->
-    utils.setTabIndex([@imageEditor, @openImageButton, @titleEditor,
+    utils.setTabIndex([@closeViewButton,@imageEditor, @openImageButton, @titleEditor,
       @widthEditor, @heightEditor, @alignEditor, @copyImageCheckbox])
 
     @imageEditor.on "blur", =>
@@ -52,6 +54,7 @@ class InsertImageFileView extends View
     @titleEditor.on "blur", =>
       @updateCopyImageDest(@imageEditor.getText().trim())
     @openImageButton.on "click", => @openImageDialog()
+    @closeViewButton.on "click", => @closeView()
 
     @disposables = new CompositeDisposable()
     @disposables.add(atom.commands.add(
@@ -71,7 +74,10 @@ class InsertImageFileView extends View
     if !@copyImageCheckbox.hasClass('hidden') && @copyImageCheckbox.prop("checked")
       @copyImage(@resolveImagePath(imgSource), callback)
     else
-      callback()
+      @uploadImage(imgSource, callback)
+
+  closeView: ->
+    @detach()
 
   display: ->
     @panel ?= atom.workspace.addModalPanel(item: this, visible: false)
@@ -132,6 +138,25 @@ class InsertImageFileView extends View
       @copyImagePanel.addClass("hidden")
     else
       @copyImagePanel.removeClass("hidden")
+
+  uploadImage: (file, callback) ->
+    return callback() if utils.isUrl(file) || !fs.existsSync(file)
+    errorConfirm = (errorMessage) =>
+      atom.confirm
+        message: "[Markdown Writer] Error!"
+        detailedMessage: "Uploading Image:\n#{errorMessage}"
+        buttons: ['OK']
+    try
+      qiniu.upload(file, @titleEditor.getText(), path.extname(file),  @dateTime,
+        (data) =>
+          if data.success
+            @imageEditor.setText(data.src)
+            callback()
+          else
+            errorConfirm(data.message)
+      )
+    catch error
+      errorConfirm(error.message)
 
   updateCopyImageDest: (file) ->
     return unless file

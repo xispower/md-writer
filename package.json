@@ -1,24 +1,25 @@
 {
-  "name": "markdown-writer",
-  "main": "./lib/markdown-writer",
-  "version": "2.10.3",
-  "description": "Make Atom a better Markdown editor and an easier static blogging tool.",
-  "keywords": [
-    "Markdown",
-    "AsciiDoc",
-    "Jekyll",
-    "Octopress",
-    "Hexo",
-    "Writing",
-    "Blogging"
+  "_from": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball",
+  "_id": "markdown-writer@2.10.3",
+  "_inBundle": false,
+  "_integrity": "sha512-iwxnR8wuW1opup+YCOgft8PqPWZ4A8afZ0vnkTqtLRyyPnQh38Yms0oJ9lueVSh5Z5soi2No/C27jlbKqPqd2g==",
+  "_location": "/markdown-writer",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
-  "author": "Wang Zhuochun <zhuochun@hotmail.com> (http://www.bicrement.com/)",
-  "repository": "https://github.com/zhuochun/md-writer",
-  "bugs": "https://github.com/zhuochun/md-writer/issues",
-  "license": "MIT",
-  "keymaps": [
-    "keymap.cson"
-  ],
+  "_resolved": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball",
+  "_shasum": "1500598134d9017cfd2ee5076ac405a676ee292e",
+  "_spec": "https://www.atom.io/api/packages/markdown-writer/versions/2.10.3/tarball",
+  "_where": "/private/var/folders/9t/xbbd7jws3js70p44w0893jjr0000gn/T/apm-install-dir-1181012-12273-10nsx73.2ojk",
   "activationCommands": {
     "atom-workspace": [
       "markdown-writer:new-post",
@@ -74,15 +75,48 @@
       "markdown-writer:undent-list-line"
     ]
   },
-  "engines": {
-    "atom": ">=1.9.0 <2.0.0"
+  "author": {
+    "name": "Wang Zhuochun",
+    "email": "zhuochun@hotmail.com",
+    "url": "http://www.bicrement.com/"
   },
+  "bugs": {
+    "url": "https://github.com/zhuochun/md-writer/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "atom-space-pen-views": "^2.0.3",
     "fs-plus": "^2.0.0",
-    "js-yaml": "^3.2.0",
     "guid": "0.0.12",
+    "js-yaml": "^3.2.0",
     "season": "^5.1.0",
-    "wcwidth": "^1.0.0"
-  }
+    "wcwidth": "^1.0.0",
+    "qiniu": "^7.2.1"
+  },
+  "deprecated": false,
+  "description": "Make Atom a better Markdown editor and an easier static blogging tool.",
+  "engines": {
+    "atom": ">=1.9.0 <2.0.0"
+  },
+  "homepage": "https://github.com/zhuochun/md-writer#readme",
+  "keymaps": [
+    "keymap.cson"
+  ],
+  "keywords": [
+    "Markdown",
+    "AsciiDoc",
+    "Jekyll",
+    "Octopress",
+    "Hexo",
+    "Writing",
+    "Blogging"
+  ],
+  "license": "MIT",
+  "main": "./lib/markdown-writer",
+  "name": "markdown-writer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuochun/md-writer.git"
+  },
+  "version": "2.10.3"
 }
