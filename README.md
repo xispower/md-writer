@@ -15,6 +15,8 @@ More GIFs Here: [Create New Post](http://i.imgur.com/BwntxhB.gif), [Insert Refer
 
 ## Features
 
+
+
 ### Blogging
 
 - **Create new draft** with front matters ([setup^][ca8870d7]).
@@ -29,6 +31,15 @@ More GIFs Here: [Create New Post](http://i.imgur.com/BwntxhB.gif), [Insert Refer
   [1561ed4c]: https://github.com/zhuochun/md-writer/wiki/Settings#project-specific-settings "Project Specific Settings"
 
 ### General
+
+#### 用法
+
+markdown-writer 版本：2.10.3
+
+```
+cd ~/.atom/packages
+git clone https://github.com/chenghm123/md-writer-qiniu.git markdown-writer
+```
 
 - **Continue lists or table rows** when you press `enter` ([customize][adaa9527]).
   - **Correct ordered list numbers** (`markdown-writer:correct-order-list-numbers`).
