@@ -11,6 +11,8 @@ Works great with static blogging as well. Try it with [Jekyll](http://jekyllrb.c
 
 ![Insert Image](http://i.imgur.com/s9ekMns.gif)
 
+![](WX20181112-183448@2x.png)
+
 More GIFs Here: [Create New Post](http://i.imgur.com/BwntxhB.gif), [Insert Reference Link](http://i.imgur.com/L67TqyF.gif), [Remove Reference Link](http://i.imgur.com/TglzeJV.gif).
 
 ## Features
