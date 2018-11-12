@@ -128,6 +128,8 @@ Your contributions are really appreciated. You can follow [CONTRIBUTING](https:/
 - Star [GitHub repo][e8960946] and [Atom package][91a1b9c2] to support this project :+1:
 - License in [MIT][6a9a3773] :unlock:
 - Shipped by [Zhuochun][41ae693b] :sunny: and [contributors][f303810e] :clap:
+- Thanks https://github.com/chenghm123/md-writer-qiniu
+- Thanks https://github.com/knightli/qiniu-uploader
 
   [e45121fa]: https://github.com/zhuochun/md-writer/blob/master/CHANGELOG.md
   [e6ad7ed1]: https://github.com/zhuochun/md-writer/issues
