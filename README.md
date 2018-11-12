@@ -40,7 +40,7 @@ markdown-writer 版本：2.10.3
 
 ```
 cd ~/.atom/packages
-git clone https://github.com/chenghm123/md-writer-qiniu.git markdown-writer
+git clone https://github.com/xispower/md-writer-qiniu.git markdown-writer
 ```
 
 - **Continue lists or table rows** when you press `enter` ([customize][adaa9527]).
